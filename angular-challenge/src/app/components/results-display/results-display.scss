@@ -1,0 +1,56 @@
+@use '../../../variables' as vars;
+
+.results-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 50vh;       // scrollable height
+  overflow-y: auto;       // vertical scroll
+  padding: 1rem;
+  padding-bottom: 2rem;   // space at bottom
+  margin-top: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$primary-color;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: vars.$text-secondary-color;
+  }
+}
+
+.result-card {
+  background-color: vars.$card-bg-color;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 1rem;
+
+  mat-card-title {
+    font-size: 1.2rem;
+    color: vars.$primary-color;
+    font-weight: bold;
+  }
+
+  mat-divider {
+    margin: 0.5rem 0;
+    background-color: vars.$divider-color;
+  }
+
+  .sub-details {
+    margin-left: 15px;
+  }
+}
+
+.loading, .no-results {
+  text-align: center;
+  font-style: italic;
+  color: vars.$text-secondary-color;
+  margin-top: 1rem;
+}
+
+.key{
+  color: vars.$primary-color;
+}

@@ -1,0 +1,20 @@
+@use '../_variables' as vars;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  min-height: 100vh;          // full height of screen
+  width: 100%;                // full width
+  background-color: vars.$background-color;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.app-title {
+  font-size: 2rem;
+  color: vars.$primary-color;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}

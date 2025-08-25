@@ -1,0 +1,69 @@
+@use '../../../variables' as vars;
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 500px;
+  background-color: vars.$card-bg-color;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  gap: 1.5rem;
+}
+
+// Radio buttons
+.search-type {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1rem;
+  color: vars.$text-color;
+
+  mat-radio-button {
+    margin: 0.2rem;
+  }
+}
+
+// Make Material input full width and focus primary
+.search-input {
+  width: 100%;
+  
+  mat-form-field {
+    width: 100%;
+
+    // Focused outline and label color
+    .mat-form-field-outline {
+      border-color: vars.$primary-color !important;
+    }
+
+    .mat-form-field-ripple {
+      background-color: vars.$primary-color !important;
+    }
+
+    .mat-focused .mat-form-field-label {
+      color: vars.$primary-color !important;
+    }
+  }
+}
+
+// Button full width with border and hover
+.search-button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: vars.$primary-color;
+  color: #fff;
+  font-size: 1rem;
+  border: 1px solid vars.$primary-color;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:hover {
+    background-color: vars.$primary-color;
+    border-color: vars.$primary-color;
+    color: vars.$background-color;
+  }
+}

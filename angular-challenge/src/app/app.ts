@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { SearchFormComponent } from './components/search-form/search-form';
+import { ResultsDisplayComponent } from './components/results-display/results-display';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, SearchFormComponent, ResultsDisplayComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('angular-challenge');
+  currentSearchValues: string[] = [];
+  currentSearchType: 'aircraft' | 'callsign' = 'aircraft';
+
+  onSearch(event: { values: string[]; type: 'aircraft' | 'callsign' }) {
+    this.currentSearchValues = event.values;
+    this.currentSearchType = event.type;
+  }
 }

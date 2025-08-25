@@ -1,0 +1,43 @@
+<div *ngIf="isLoading" class="loading">
+  Loading...
+</div>
+
+<div *ngIf="!isLoading && results.length > 0" class="results-vertical">
+  <mat-card *ngFor="let item of results" class="result-card">
+    <div *ngIf="hasData(item); else noData">
+
+      <!-- Aircraft -->
+      <ng-container *ngIf="_searchType === 'aircraft'">
+        <mat-card-title>Aircraft: {{ item.response.aircraft.registration || 'Unknown' }}</mat-card-title>
+        <mat-divider></mat-divider>
+        <div *ngFor="let key of getKeys(item.response.aircraft)">
+          <strong>{{ key }}:</strong> {{ item.response.aircraft[key] ?? 'N/A' }}
+        </div>
+      </ng-container>
+
+      <!-- Callsign -->
+      <ng-container *ngIf="_searchType === 'callsign'">
+        <mat-card-title>Callsign: {{ item.response.flightroute.callsign || 'Unknown' }}</mat-card-title>
+        <mat-divider></mat-divider>
+        <strong class="key">flightroute:</strong>
+        <div *ngFor="let key of getKeys(item.response.flightroute)">
+          <ng-container *ngIf="isObject(item.response.flightroute[key]); else primitive">
+            <strong class="key">{{ key }}:</strong>
+            <div *ngFor="let subKey of getKeys(item.response.flightroute[key])" class="sub-details">
+              <strong >{{ subKey }}:</strong> {{ item.response.flightroute[key][subKey] ?? 'N/A' }}
+            </div>
+          </ng-container>
+          <ng-template #primitive>
+            <strong>{{ key }}:</strong> {{ item.response.flightroute[key] ?? 'N/A' }}
+          </ng-template>
+        </div>
+      </ng-container>
+
+    </div>
+    <ng-template #noData>
+      <p>{{ item.error || 'No data available' }}</p>
+    </ng-template>
+  </mat-card>
+</div>
+
+

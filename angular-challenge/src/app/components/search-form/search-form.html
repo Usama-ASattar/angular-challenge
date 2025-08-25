@@ -1,0 +1,31 @@
+<mat-card class="search-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+
+    <!-- Search Type Radios -->
+    <mat-radio-group formControlName="searchType" color="primary" class="search-type">
+      <mat-radio-button value="aircraft">Aircraft</mat-radio-button>
+      <mat-radio-button value="callsign">Callsign</mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Search Input -->
+    <mat-form-field appearance="outline" color="primary" class="search-input">
+      <mat-label>Enter value(s) comma separated</mat-label>
+      <input
+        matInput
+        formControlName="searchValues"
+        placeholder="  E.g. A727F5, TAI567"
+      />
+    </mat-form-field>
+
+    <!-- Search Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      class="search-button"
+    >
+      Search
+    </button>
+
+  </form>
+</mat-card>
